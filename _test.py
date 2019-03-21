@@ -3,6 +3,7 @@
 
 """ Testing own functions zip(), xrange() and """
 
+import pytest
 from main import own_zip, own_xrange, reverse_items
 
 
@@ -46,11 +47,25 @@ class Test:
     def test_three(self):
         assert list(own_xrange(3, 0, -1)) == [3, 2, 1]
 
+    def test_type_err(self):
+        with pytest.raises(TypeError):
+            own_xrange()
+
+    def test_value_err_1(self):
+        with pytest.raises(ValueError):
+            own_xrange('a')
+
+    def test_value_err_2(self):
+        with pytest.raises(ValueError):
+            own_xrange(1, 5, 0)
+
     # Test reverse_items()
     def test_change(self):
         d = {'key': 'value'}
         assert reverse_items(d) == {'value': 'key'}
 
+    def test_unchangeable(self):
+        d = {'key': ['value']}
+        with pytest.raises(TypeError):
+            reverse_items(d)
 
-if __name__ == '__main__':
-    pass

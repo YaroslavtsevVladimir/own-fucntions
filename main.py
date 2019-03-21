@@ -79,7 +79,6 @@ def reverse_items(dictionary):
 
 
 if __name__ == '__main__':
-
     print own_xrange(3)
     print own_zip([2, 3], [4, 5])
-    print reverse_items({1: '1'})
+    print reverse_items({1: '1', 2: '2', 3: '3'})
